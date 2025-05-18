@@ -131,12 +131,12 @@ plot_scatter(y_train_orig, y_train_pred, "Training Set Prediction Results", trai
 plot_scatter(y_val_orig, y_val_pred, "Validation Set Prediction Results", val_metrics, "val_scatter.png")
 plot_scatter(y_test_orig, y_test_pred, "Test Set Prediction Results", test_metrics, "test_scatter.png")
 
-y_all_orig = pd.concat([
-    y_train, y_val, y_test])
+X_all = pd.concat([X_train, X_val, X_test])[['x', 'y']].reset_index(drop=True)
+y_all_orig = pd.concat([y_train, y_val, y_test]).reset_index(drop=True)
 y_all_pred = np.concatenate([y_train_pred, y_val_pred, y_test_pred])
 y_all_pred_df = pd.DataFrame(y_all_pred, columns=['U_pred', 'V_pred'])
-result_df = pd.concat([y_all_orig.reset_index(drop=True), y_all_pred_df], axis=1)
 
+result_df = pd.concat([X_all, y_all_orig, y_all_pred_df], axis=1)
 result_df.to_excel('prediction.xlsx', index=False)
 
 model.save('model.keras')
