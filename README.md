@@ -1,36 +1,39 @@
 # Neural Network Regression for Predicting U and V
 
-This project builds and trains a neural network using TensorFlow to predict the values of `U` and `V` from input variables `x` and `y`. It applies polynomial feature engineering, data normalization, and evaluates performance using regression metrics.
+This project builds and trains a neural network using TensorFlow to predict the values of `U` and `V` from input variables `x` and `y`.
 
-## Features
+## Files
 
-- Reads data from `Data.xlsx` and generates polynomial features: `x²`, `y²`, and `xy`.
-- Splits dataset into training, validation, and test sets.
-- Normalizes input and output using `MinMaxScaler`.
-- Uses a deep neural network with dropout and LeakyReLU activations.
-- Trains using MSE loss and evaluates with R², MSE, RMSE, MAE.
-- Saves predictions and plots to files.
+- `train.py` — Loads and preprocesses data, trains the model, saves predictions and training plot.
+- `test.py` — Loads the saved model, evaluates performance, and generates a scatter plot comparing predicted and actual values.
+- `Data.xlsx` — Input data file (must contain columns: `x`, `y`, `U`, `V`).
 
 ## Outputs
 
-- 📉 `loss_plot.png`: Training and validation loss over epochs (log scale).  
-- 🔵 `train_scatter.png`: Scatter plot of true vs. predicted on training set.  
-- 🟠 `val_scatter.png`: Scatter plot for validation set.  
-- 🟢 `test_scatter.png`: Scatter plot for test set.  
-- 📊 `prediction.xlsx`: Excel file containing true and predicted U, V values.  
-- 💾 `model.keras`: Saved Keras model.
+- `final_model.keras` — Saved trained model.
+- `final_prediction.xlsx` — Predicted values on training data.
+- `final_loss_plot.png` — Log-scaled loss plot during training.
+- `test_predictions.xlsx` — Model predictions and ground truth comparison.
+- `test_scatter.png` — Scatter plot of true vs predicted values.
+- Terminal output of R², MSE, RMSE, and MAE.
 
 ## Plots
 
-| Validation | Training |
-|--------------------|--------------------|
-|![Validation Scatter](val_scatter.png) | ![Train Scatter](train_scatter.png) |
 
 | Test | Training Loss Plot |
 |------------|------|
-| ![Test Scatter](test_scatter.png) | ![Loss Plot](loss_plot.png) |
+| ![Test Scatter](out/test_scatter.png) | ![Loss Plot](out/final_loss_plot.png) |
 
 ---
 
 **Author:** Muhammed T. ([@2mdtln](https://github.com/2mdtln))  
 **Date:** 2025-05-18
+
+
+
+
+
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
